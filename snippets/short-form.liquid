@@ -1,0 +1,54 @@
+{% if section.settings.show-sku %}<span class="variant-sku"></span>{% endif %}
+<form action="/cart/add" method="post" data-money-format="{{ shop.money_format }}" enctype="multipart/form-data" id="AddToCartForm">
+  {% if product.options.size > 1 %}
+  <div class="select">
+    <select id="product-select" name='id'>
+      {% for variant in product.variants %}
+      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% elsif product.options.size == 1 and product.variants.size > 1 %}
+  <div class="select">
+    <label>{{ product.options[0] }}</label>
+    <select id="product-select" name='id'>
+      {% for variant in product.variants %}
+      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% else %}
+  <div class="what-is-it">
+    {% if product.options.first != 'Title' %}
+    <label>{{ product.options.first }}:</label>{% for variant in product.variants %}<span class="it-is">{{ variant.option1 | escape }}</span>{% endfor %}
+    {% endif %}
+  </div>
+  <div class="product-variants"></div><!-- product variants -->  
+  <input  type="hidden" id="{{ variant.id }}" name="id" data-sku="{{ variant.sku }}" value="{{ product.variants[0].id }}" />    
+  {% endif %}
+
+  {% if product.available %} 
+
+  {% if product.template_suffix == 'customizable' %}
+  <div>
+    <label for="monogram">{{ 'products.product.monogram' | t }}</label>
+    <input type="text" id="monogram" name="properties[Monogram]">
+  </div>
+  {% endif %}
+  
+  <div class="product-add">
+    <label for="quantity">Quantity</label> 
+    <input min="1" type="number" class="quantity" name="quantity" value="1" />
+    <input type="submit" name="button" class="add" id="AddToCart" value="{{ 'products.product.add_to_cart' | t }}" />
+  </div>
+  {% endif %}
+
+</form>
+{% unless product.empty? %}
+{% if product.variants.size > 1 or product.options.size > 1 %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+{% endif %}
+{% endunless %}
+

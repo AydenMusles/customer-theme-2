@@ -1,0 +1,92 @@
+<section class="index-section homepage-instagram no-fouc" data-section-id="{{ section.id }}" >
+  {% assign igimage = '{{image}}'%}
+  {% assign url = '{{link}}' %}
+  {% assign caption = '{{caption}}' %}
+  <article>
+    {% if section.settings.title != blank %}
+    <div class="section-title row">
+      <h2><a href="//instagram.com/{{ settings.instagram-id }}">{{ section.settings.title | escape }}</a></h2>
+    </div> 
+    {% endif %}
+
+    <div class="gridlock-fluid">
+      <div class="row">
+        <div class="row">
+          {% if section.settings.instagram-user-id and section.settings.instagram-access-token != blank %}
+          <div id="instafeed"></div>
+          {% else %}
+		  {% include 'onboard-instagram' %}
+		  {% endif %}
+        </div>
+      </div>
+    </div>
+    {% unless section.settings.instagram-user-id and section.settings.instagram-access-token == blank %}
+    <script type="text/javascript">
+      var userFeed = new Instafeed({
+        get: 'user',
+        limit: 6,
+        userId: {{ section.settings.instagram-user-id }},
+        accessToken: '{{ section.settings.instagram-access-token }}',
+        template: '<a target="_blank" href="{{url}}" rel="ig" title="{{ caption }}"><img class="instagram-image desktop-2 tablet-1 mobile-1 contained" src="{{ igimage }}" /></a>'
+      });
+      userFeed.run();        
+    </script>
+    {% endunless %}
+  </article>
+</section>
+
+<style>
+  
+  /* INSTAGRAM */
+  section.homepage-instagram {
+    background: {{ section.settings.instagram-background-color }};
+  }
+
+  section.homepage-instagram h2 {
+    color: {{ section.settings.instagram-title-color }}!important; 
+  }
+</style>
+
+
+{% schema %}
+{
+	"name": "Instagram feed",
+	"settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Follow us on Instagram"
+    },
+      {
+          "type": "text",
+          "id": "instagram-user-id",
+          "label": "User ID"
+      },
+      {
+          "type": "textarea",
+          "id": "instagram-access-token",
+          "label": "Access token",
+      	  "info": "Required for permission to show your Instagram content [instructions here](http://support.undergroundmedia.co.uk/customer/en/portal/articles/2386318-home-page---instagram-feed) for setup."
+      },
+      {
+        "type": "color",
+        "id": "instagram-title-color",
+        "label": "Title",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "instagram-background-color",
+        "label": "Background",
+        "default": "#fff"
+      }
+  ],
+  "presets": [
+    {
+      "name": "Instagram feed",
+      "category": "Social media"
+    }
+  ]
+}
+{% endschema %}
