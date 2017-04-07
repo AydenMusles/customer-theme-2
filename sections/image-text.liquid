@@ -1,7 +1,7 @@
 {%- assign image_size = '2000x' -%}
 {%- assign img_url = section.settings.image | img_url: image_size -%}
 
-<section class="parallax-{{ section.id }} index-section parallax parallax-window no-fouc" data-parallax="scroll" data-image-src="{{ img_url }}" data-section-id="{{ section.id }}" >
+<section class="image-text-{{ section.id }} index-section  no-fouc" data-image-src="{{ img_url }}" data-section-id="{{ section.id }}" >
   <article class="row">
     <div class="parallax-content desktop-12 tablet-6 mobile-3">
       {% if section.settings.page-content == 'text' %}
@@ -17,7 +17,7 @@
       {% else %}
       {% endif %}
   {% if section.settings.image == blank %}
-  {% include 'onboard-parallax' %}
+  {% include 'onboard-image-text' %}
   {% endif %}
     </div>
   </article>
@@ -25,52 +25,54 @@
 
 <div class="clear"></div>
 
-
 {% unless section.settings.page-content == 'page-content' %}
+{% assign small_height =section.settings.page-height |times: 0.5 %}
 <style>
-  .parallax-{{ section.id }} article {
-    display: table;
-    height: {{ section.settings.page-height }}px;
-    min-height: {{ section.settings.page-height }}px;
+  .image-text-{{section.id}} {
+    background-image: url({{ img_url }});
+    background-size: cover! important;
+    background-repeat: no-repeat! important;
+    background-position: center top! important;
+    height: {{small_height}}px;
   }
-  .parallax-{{ section.id }} .parallax-text {
-    font-size: {{ section.settings.parallax-font-size }};
-    font-weight: {{ section.settings.parallax-font-weight }};
-  }
-  section.parallax-{{ section.id }} .parallax-text, section.parallax-{{ section.id }} .parallax-text, section.parallax-{{ section.id }} .parallax-text a, section.parallax-{{ section.id }} .parallax-text a:visited {
-    color: {{ section.settings.page-text-color }};
+
+  @media screen and ( min-width: 768px ) {
+    .image-text-{{section.id}} {
+      height: {{section.settings.page-height}}px;
+    }
   }
 
   @media screen and ( min-width: 1220px ) {
-    section.parallax-{{ section.id }} {
+    .image-text-{{section.id}} {
       background-size: 100%! important;
     }
   }
 
-  @media screen and ( max-width: 1024px ) {
-    .parallax-{{ section.id }} {
-      background-attachment: scroll! important;
-      background-size: cover! important;
-    }
-
-    section.parallax-{{ section.id }} {
-      background: url({{ img_url }});
-    }
+  .image-text-{{section.id}} article {
+    display: table;
+    height: {{ section.settings.page-height }}px;
+    min-height: {{ section.settings.page-height }}px;
+  }
+  .image-text-{{section.id}} .parallax-text {
+    font-size: {{ section.settings.parallax-font-size }};
+    font-weight: {{ section.settings.parallax-font-weight }};
+  }
+  .image-text-{{section.id}} .parallax-text, section.parallax-{{ section.id }} .parallax-text, section.parallax-{{ section.id }} .parallax-text a, section.parallax-{{ section.id }} .parallax-text a:visited {
+    color: {{ section.settings.page-text-color }};
   }
 
   @media screen and ( max-width: 740px ) {
-    section.parallax-{{ section.id }} article {
+    .image-text-{{section.id}} article {
       height: initial;
       min-height: 200px;
     }
   }
-
 </style>
 {% endunless %}
 
 {% schema %}
   {
-    "name": "Image + Text (parallax)",
+    "name": "Image + Text",
     "settings": [
       {
         "type": "image_picker",
@@ -235,7 +237,7 @@
 	],
   "presets": [
       {
-        "name": "Image + Text (parallax)",
+        "name": "Image + Text",
         "category": "Image"
       }
     ]
