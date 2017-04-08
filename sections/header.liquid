@@ -8,9 +8,19 @@
       {% endif %}
 
       {% if section.settings.cart-position == 'top-bar' %}
-      <ul id="cart" class="desktop-6 tablet-3 mobile-hide right">                  
-        <li class="seeks"><a id="inline" href="#search_popup" class="open_popup"><i class="fa fa-search" aria-hidden="true"></i></a>
-          {% if settings.show_multiple_currencies %}{% include 'currencies-switcher' %}{% endif %}</li>
+      <ul id="cart" class="desktop-6 tablet-3 mobile-hide right">
+        <li>
+          <div id="search">
+            <form action="/search" method="get">
+              <input type="text" name="q" id="q" placeholder="{{ 'general.search.placeholder' | t }}"/>
+            </form>
+          </div>
+        </li>
+        <li class="seeks">
+          {% comment %}<a id="inline" href="#search_popup" class="open_popup"><i class="fa fa-search" aria-hidden="true"></i></a>{% endcomment %}
+          <a id="inline" href="#search_popup" class="open_popup"><i class="fa fa-search" aria-hidden="true"></i></a>
+          {% if settings.show_multiple_currencies %}{% include 'currencies-switcher' %}{% endif %}
+        </li>
         {% if shop.customer_accounts_enabled %}
         <li class="cust">
           {% if customer  %}
@@ -27,59 +37,71 @@
       		&nbsp;{% if section.settings.cart_icon == 'cart' %}<i class="fa fa-shopping-cart" aria-hidden="true"></i>{% elsif section.settings.cart_icon == 'bag' %}<i class="fa fa-shopping-bag" aria-hidden="true"></i>{% endif %}
             <span class="CartCount">{{ cart.item_count }}</span>
             &nbsp;<span class="CartCost">{{ cart.total_price | money }}</span>
-          </a> 
+          </a>
         </li>
       </ul>
       {% endif %}
       {% include 'mobile-cart' %}
     </div>
-  </div> 
+  </div>
   <div id="navigation"{% if section.settings.full-width-header %} class="gridlock-fluid"{% endif %}>
     <div class="row">
       <div class="nav-container desktop-12 tablet-6 mobile-3">
         {% if section.settings.logo-align == 'left' %}
-        <div id="logo" class="desktop-2 tablet-2 mobile-3">       
+        <div id="logo" class="desktop-2 tablet-2 mobile-3">
           {% if section.settings.use_logo_image %}
           {%- assign image_size = '400x' -%}
           <a href="/">
-            <img src="{{ section.settings.logo | img_url: image_size }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">        
+            <img src="{{ section.settings.logo | img_url: image_size }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
           </a>
           {% else %}
           <a href="/">{{ shop.name }}</a>
-          {% endif %}             
-        </div> 
+          {% endif %}
+        </div>
         {% endif %}
-        
-        
+
+
         <nav class="{% if section.settings.logo-align == 'center' %} nav-left desktop-5{% if section.settings.nav-style == 'mobile' %} tablet-1{% endif %} {% elsif section.settings.logo-align == 'left' and section.settings.cart-position == 'top-bar' %} desktop-10 tablet-4{% elsif section.settings.logo-align == 'left' and section.settings.cart-position == 'header' %} desktop-7{% endif %}">
           {% if section.settings.nav-style == 'full'%}
-          <ul id="main-nav" role="navigation"> 
+          <ul id="main-nav" role="navigation">
             {% for link in linklists[section.settings.main_nav].links %}
             {% include 'navigation' %}
             {% endfor %}
-          </ul>  
+          </ul>
           {% elsif section.settings.nav-style == 'mobile' %}
           <span class="shifter-handle"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></span>
           {% endif %}
         </nav>
 
         {% if section.settings.logo-align == 'center' %}
-        <div id="logo" class="desktop-2 tablet-6 mobile-3">       
+        <div id="logo" class="desktop-2 tablet-6 mobile-3">
           {% if section.settings.use_logo_image %}
           {%- assign image_size = '400x' -%}
           <a href="/">
-            <img src="{{ section.settings.logo | img_url: image_size }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">        
+            <img src="{{ section.settings.logo | img_url: image_size }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo">
           </a>
           {% else %}
           <a href="/">{{ shop.name }}</a>
-          {% endif %}             
-        </div> 
-        {% endif %}  
-        
+          {% endif %}
+        </div>
+        {% endif %}
+
         {% if section.settings.cart-position == 'header' %}
-        <ul id="cart" class="desktop-5 tablet-3 mobile-hide right">                  
-          <li class="seeks"><a id="inline" href="#search_popup" class="open_popup"><i class="fa fa-search" aria-hidden="true"></i></a>
-            {% if settings.show_multiple_currencies %}{% include 'currencies-switcher' %}{% endif %}</li>
+        <ul id="cart" class="desktop-5 tablet-3 mobile-hide right">
+          <li id="inline-search">
+            <div id="search">
+              <form action="/search" method="get">
+                <input type="text" name="q" id="q" placeholder=""/>
+              </form>
+              <a id="inline-show" href="#search"><i class="fa fa-search" aria-hidden="true"></i></a>
+            </div>
+          </li>
+{% comment %}
+          <li class="seeks">
+            <a id="inline" href="#search_popup" class="open_popup"><i class="fa fa-search" aria-hidden="true"></i></a>
+            {% if settings.show_multiple_currencies %}{% include 'currencies-switcher' %}{% endif %}
+          </li>
+{% endcomment %}
           {% if shop.customer_accounts_enabled %}
           <li class="cust">
             {% if customer  %}
@@ -96,20 +118,20 @@
       			&nbsp;{% if section.settings.cart_icon == 'cart' %}<i class="fa fa-shopping-cart" aria-hidden="true"></i>{% elsif section.settings.cart_icon == 'bag' %}<i class="fa fa-shopping-bag" aria-hidden="true"></i>{% endif %}
               <span class="CartCount">{{ cart.item_count }}</span>
               &nbsp;<span class="CartCost">{{ cart.total_price | money }}</span>
-            </a> 
+            </a>
           </li>
         </ul>
         {% elsif section.settings.cart-position == 'top-bar' and section.settings.logo-align == 'center' %}
         <div class="desktop-5 tablet-3" id="logo-spacer">
         </div>
         {% endif %}
-        
+
       </div>
-    </div>  
+    </div>
   </div>
 </header>
 
-<div id="phantom"{% if section.settings.header_cover and template == 'index' %} class="ignore-this"{% endif %}></div>   
+<div id="phantom"{% if section.settings.header_cover and template == 'index' %} class="ignore-this"{% endif %}></div>
 
 <style>
   {% if section.settings.use_logo_image %}
@@ -133,14 +155,14 @@
   {% unless section.settings.logo-align == 'center' %}
   #logo { margin-right: 20px; }
   {% endunless  %}
-  
+
   {% unless section.settings.cart-position == 'top-bar' %}
   .bannertop { text-align: center! important; }
   {% endunless %}
   {% if section.settings.logo-align == 'left' and section.settings.nav-style == 'mobile' %}
   .shifter-handle { margin-left: 20px; }
   {% endif %}
-  
+
   .bannertop {
     font-size: {{ section.settings.banner_size }};
   }
@@ -151,12 +173,45 @@
     font-family: {{ settings.font }};
     font-size: {{ section.settings.banner_size }};
   }
-  #logo a { 
-    font-size: {% if settings.use_logo_image %}inherit{% else %}{{ section.settings.logo-size }}{% endif %}; 
-    text-transform: {{ section.settings.logo-transform }}; 
-    font-weight: {{ section.settings.logo-weight }}; 
-  }  
+  #logo a {
+    font-size: {% if settings.use_logo_image %}inherit{% else %}{{ section.settings.logo-size }}{% endif %};
+    text-transform: {{ section.settings.logo-transform }};
+    font-weight: {{ section.settings.logo-weight }};
+  }
+  #inline-show {
+    padding: 5px 5px 5px 0;
+  }
+  li#inline-search div#search {
+    text-align: right;
+    max-width:300px;
+    display: inline-block;
+  }
+  li#inline-search div#search form {
+    display: inline-block;
+  }
+  li#inline-search div#search form #q {
+    display: none;
+    height: inherit;
+    width: 200px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    padding: 5px 0 ;
+    outline: none;
+    margin-bottom: 0;
+  }
+  li#inline-search div#search form #q:focus {
+    color: #444;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 </style>
+<script>
+$('#inline-show').click(function(e) {
+  e.preventDefault();
+  $('li#inline-search div#search form #q').toggle('slow');
+})
+</script>
 
 {% schema %}
   {
@@ -386,7 +441,7 @@
           }
         ],
 	  "info":"You can change the text in your edit language section"
-      },    
+      },
 	 {
         "type": "select",
         "id": "nav-style",
@@ -449,11 +504,11 @@
         "default": "\/collections\/all"
       }
     ],
-	"blocks":[  
-      {  
+	"blocks":[
+      {
          "type":"menu",
          "name":"Menu",
-         "settings":[  
+         "settings":[
             {
                "type": "link_list",
                "id": "mega-nav",
@@ -474,4 +529,4 @@
 
 
 
-		
+
