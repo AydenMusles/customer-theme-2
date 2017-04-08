@@ -7,6 +7,11 @@
       <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
       {% endfor %}
     </select>
+    {% if product.available and product.variants.size > 1 %}
+      {% for option in product.options %}
+        {% include 'swatch' with option %}
+      {% endfor %}
+    {% endif %}
   </div>
   {% elsif product.options.size == 1 and product.variants.size > 1 %}
   <div class="select">
