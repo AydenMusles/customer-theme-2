@@ -1,0 +1,280 @@
+
+
+
+<div class="accordion">
+  <dl>
+    {% if product.metafields.c_f["Product Fit"] != blank %}
+    <dt>
+    <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">FIT</a>
+    </dt>
+    <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
+      <p>{{ product.metafields.c_f["Product Fit"] }}</p>
+    </dd>
+    {% endif %}
+    {% if product.metafields.c_f["Product Care"] != blank %}
+    <dt>
+      <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger">CARE</a>
+    </dt>
+    <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
+      <p>{{ product.metafields.c_f["Product Care"] }}</p>
+    </dd>
+    {% endif %}
+    {% if product.metafields.c_f["Product Size Guide"] != blank %}
+    <dt>
+      <a href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordionTitle js-accordionTrigger">SIZE GUIDE</a>
+    </dt>
+    <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
+      <p>{{ product.metafields.c_f["Product Size Guide"] }}</p>
+    </dd>
+    {% endif %}
+  </dl>
+</div>
+
+<style>
+
+
+.heading-primary {
+  font-size: 2em;
+  padding: 2em;
+  text-align: center;
+}
+.accordion dl:after,
+.accordion-list:after {
+  content: "";
+  display: block;
+  width: 100%;
+}
+
+.accordion dd,
+.accordion__panel {
+  font-size: 1em;
+  line-height: 1.5em;
+  display: block;
+}
+
+.accordion p {
+  font-size: 11px;
+  letter-spacing: 2px;
+  padding: 1em;
+  /*text-transform: uppercase;*/
+  text-align: center;
+}
+.accordion {
+  border-top: 1px solid #ddd;
+  float: left;
+  margin-top: 30px;
+  width: 100%;
+  width: 65%;
+}
+@media (min-width: 981px) {
+  .accordion {
+    max-width: 370px;
+  }
+}
+.accordion {
+  position: relative;
+}
+.accordion li {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.accordion .accordion-content > ul {
+  margin: 15px;
+  list-style: outside;
+}
+.accordionTitle, .accordion__Heading {
+  background-color: transparent;
+  border-bottom: 1px solid #ddd;
+  color: black;
+  display: block;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 2px;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.5s ease-in-out 0s;
+}
+.accordionTitle:before,
+.accordion__Heading:before {
+  content: "+";
+  font-size: 16px;
+  line-height: 16px;
+  float: right;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+.accordionTitleActive:before,
+.accordionTitle.is-expanded:before {
+  -webkit-transform: rotate(-225deg);
+          transform: rotate(-225deg);
+}
+
+.accordionItem {
+  height: auto;
+  overflow: hidden;
+  max-height: 50em;
+  -webkit-transition: max-height 1s;
+  transition: max-height 1s;
+}
+@media screen and (min-width: 48em) {
+  .accordionItem {
+    max-height: 15em;
+    -webkit-transition: max-height 0.5s;
+    transition: max-height 0.5s;
+  }
+}
+
+.accordionItem.is-collapsed {
+  max-height: 0;
+}
+
+.no-js .accordionItem.is-collapsed {
+  max-height: auto;
+}
+
+.animateIn {
+  -webkit-animation: accordionIn 0.45s normal ease-in-out both 1;
+          animation: accordionIn 0.45s normal ease-in-out both 1;
+}
+
+.animateOut {
+  -webkit-animation: accordionOut 0.45s alternate ease-in-out both 1;
+          animation: accordionOut 0.45s alternate ease-in-out both 1;
+}
+
+@-webkit-keyframes accordionIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.9) rotateX(-60deg);
+            transform: scale(0.9) rotateX(-60deg);
+    -webkit-transform-origin: 50% 0;
+            transform-origin: 50% 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes accordionIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.9) rotateX(-60deg);
+            transform: scale(0.9) rotateX(-60deg);
+    -webkit-transform-origin: 50% 0;
+            transform-origin: 50% 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@-webkit-keyframes accordionOut {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0.9) rotateX(-60deg);
+            transform: scale(0.9) rotateX(-60deg);
+  }
+}
+@keyframes accordionOut {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0.9) rotateX(-60deg);
+            transform: scale(0.9) rotateX(-60deg);
+  }
+}
+  .collapse.in {
+  display: block;
+  visibility: visible;
+}
+  .accordion {
+  float: left;
+  width: 100%;
+}
+  .accordion-content {
+
+  position: relative;
+}
+
+</style>
+
+
+
+<script>
+  //uses classList, setAttribute, and querySelectorAll
+//if you want this to work in IE8/9 youll need to polyfill these
+(function(){
+  var d = document,
+  accordionToggles = d.querySelectorAll('.js-accordionTrigger'),
+  setAria,
+  setAccordionAria,
+  switchAccordion,
+  touchSupported = ('ontouchstart' in window),
+  pointerSupported = ('pointerdown' in window);
+
+  skipClickDelay = function(e){
+    e.preventDefault();
+    e.target.click();
+  }
+
+    setAriaAttr = function(el, ariaType, newProperty){
+    el.setAttribute(ariaType, newProperty);
+  };
+  setAccordionAria = function(el1, el2, expanded){
+    switch(expanded) {
+      case "true":
+        setAriaAttr(el1, 'aria-expanded', 'true');
+        setAriaAttr(el2, 'aria-hidden', 'false');
+        break;
+      case "false":
+        setAriaAttr(el1, 'aria-expanded', 'false');
+        setAriaAttr(el2, 'aria-hidden', 'true');
+        break;
+      default:
+        break;
+    }
+  };
+//function
+switchAccordion = function(e) {
+  e.preventDefault();
+  var thisAnswer = e.target.parentNode.nextElementSibling;
+  var thisQuestion = e.target;
+  if(thisAnswer.classList.contains('is-collapsed')) {
+    setAccordionAria(thisQuestion, thisAnswer, 'true');
+  } else {
+    setAccordionAria(thisQuestion, thisAnswer, 'false');
+  }
+    thisQuestion.classList.toggle('is-collapsed');
+    thisQuestion.classList.toggle('is-expanded');
+    thisAnswer.classList.toggle('is-collapsed');
+    thisAnswer.classList.toggle('is-expanded');
+
+    thisAnswer.classList.toggle('animateIn');
+  };
+  for (var i=0,len=accordionToggles.length; i<len; i++) {
+    if(touchSupported) {
+      accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
+    }
+    if(pointerSupported){
+      accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
+    }
+    accordionToggles[i].addEventListener('click', switchAccordion, false);
+  }
+})();
+</script>
