@@ -3593,6 +3593,8 @@ body.password form#login_form {
 
 {% assign width = '40px' %}
 {% assign height = '40px' %}
+/*{% assign hover_width = '38px' %}
+{% assign hover_height = '38px' %}*/
 .swatch {
   margin:1em 0;
 }
@@ -3604,6 +3606,13 @@ body.password form#login_form {
 .swatch input {
   display:none;
 }
+
+/*.swatch-element:hover {
+  border: 1px solid #000;
+  min-width:{{ hover_width }} !important;
+  height:{{ hover_height }} !important;
+}*/
+
 .swatch label {
   /* Rounded corners */
 /*  -webkit-border-radius:2px;
@@ -3626,6 +3635,11 @@ body.password form#login_form {
   line-height:{{ height }};
   white-space:nowrap;
   text-transform:uppercase;
+}
+.swatch label:hover {
+  border: 1px solid #000;
+/*  min-width:{{ hover_width }} !important;
+  height:{{ hover_height }} !important;*/
 }
 .swatch-element label { padding:0 10px; }
 .color.swatch-element label { padding:0; }

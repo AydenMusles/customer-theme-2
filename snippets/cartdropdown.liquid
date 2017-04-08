@@ -1,0 +1,28 @@
+{% comment %}/cartdropdown{% endcomment %}
+
+<style>
+#CartDrawer {
+    position: absolute;
+    top: 100px;
+    background-color: #fff;
+    border: 1px solid #000;
+    height: 80%;
+}
+
+@media (min-width: 981px) {
+    #CartDrawer {
+        top: 220px;
+        height: 60%;
+    }
+}
+.js-drawer-open-right .drawer--right {
+    display: block;
+    -ms-transform: translateX(-310px);
+    -webkit-transform: translateX(-310px);
+    transform: translateX(-310px);
+}
+
+.additional-checkout-button+.additional-checkout-button {
+     margin-left: 0;
+}
+</style>
