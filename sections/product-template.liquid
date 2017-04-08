@@ -5,7 +5,7 @@
 
   <div class="section-title desktop-12 mobile-3">
     <h1 itemprop="name">{{ product.title }}</h1>
-  </div>  
+  </div>
 
   <div class="clear"></div>
 
@@ -15,8 +15,8 @@
       <img id="{{ product.id }}" data-image-id="{{ image.id }}" src="{{ featured_image | img_url: 'master' }}" alt='{{ image.alt | escape }}' title="{{ product.title }}"/>
     </div>
 
-    {% if product.images.size > 1 %} 
-    <div class="desktop-2" id="thumbnail-gallery">   
+    {% if product.images.size > 1 %}
+    <div class="desktop-2" id="thumbnail-gallery">
       {% if product.images.size > 4 %}<div class="thumbnail-slider">{% endif %}
       {% for image in product.images %}
       <div class="slide">
@@ -26,13 +26,13 @@
       </div>
       {% endfor %}
       {% if product.images.size > 4 %}</div>{% endif %}
-    </div>        
+    </div>
     {% endif %}
   </div>
-  
+
 
   <div id="product-right" class="desktop-6 mobile-3">
-    {% if collection %} 
+    {% if collection %}
     <div class="desktop-1 right mobile-hide">
       {% if collection.previous_product %}
       {{ '<i class="icon-angle-left icon-2x"></i>' | link_to: collection.previous_product }}
@@ -56,7 +56,7 @@
           {% else %}
           <span class="product-price" itemprop="price">{{ 'products.product.sold_out' | t }}</span>
           {% endif %}
-        </p> 
+        </p>
 
         <meta itemprop="priceCurrency" content="{{ shop.currency }}">
         <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
@@ -67,30 +67,30 @@
         </p>
         {% endif %}
 
-        {% include 'short-form' %}  
+        {% include 'short-form' %}
       </div>
 
       <div class="rte">
         {{ product.description }}
-      </div>     
+      </div>
 
       <div class="clear"></div>
 
       <div class="desc">
         {% include 'social' with product %}
-      </div>        
-    </div>    
+      </div>
+    </div>
   </div>
 
   <div class="clear"></div>
 
   {% if collection %}
-  {% include 'related-products' %}
+  {% include 'related-products-new' %}
   {% endif %}
 
   <div class="clear"></div>
 
-  {% if collection %} 
+  {% if collection %}
   <div id="product-navigation" class="desktop-12 mobile-3">
     <span class="backto">
       {{ 'products.product.back_to' | t }} {{ collection.title | link_to: collection.url }}
@@ -149,6 +149,13 @@
         "type": "checkbox",
         "id": "show-sku",
         "label": "Show variant SKU",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show-qty",
+        "label": "Show Quantity Box",
+        "info": "Will default to 1 if disabled",
         "default": true
       },
       {

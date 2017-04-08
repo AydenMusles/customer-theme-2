@@ -23,11 +23,11 @@
     <label>{{ product.options.first }}:</label>{% for variant in product.variants %}<span class="it-is">{{ variant.option1 | escape }}</span>{% endfor %}
     {% endif %}
   </div>
-  <div class="product-variants"></div><!-- product variants -->  
-  <input  type="hidden" id="{{ variant.id }}" name="id" data-sku="{{ variant.sku }}" value="{{ product.variants[0].id }}" />    
+  <div class="product-variants"></div><!-- product variants -->
+  <input  type="hidden" id="{{ variant.id }}" name="id" data-sku="{{ variant.sku }}" value="{{ product.variants[0].id }}" />
   {% endif %}
 
-  {% if product.available %} 
+  {% if product.available %}
 
   {% if product.template_suffix == 'customizable' %}
   <div>
@@ -35,10 +35,10 @@
     <input type="text" id="monogram" name="properties[Monogram]">
   </div>
   {% endif %}
-  
+
   <div class="product-add">
-    <label for="quantity">Quantity</label> 
-    <input min="1" type="number" class="quantity" name="quantity" value="1" />
+    {% if section.settings.show-qty %}<label for="quantity">Quantity</label>{% endif %}
+    <input min="1" type="{% if section.settings.show-qty %}number{% else %}hidden{%endif %}" class="quantity" name="quantity" value="1" />
     <input type="submit" name="button" class="add" id="AddToCart" value="{{ 'products.product.add_to_cart' | t }}" />
   </div>
   {% endif %}
@@ -51,4 +51,19 @@
   </script>
 {% endif %}
 {% endunless %}
+
+<style>
+  #AddToCart {
+    width: 45%;
+    max-width: 300px;
+    background-color: #FFF;
+    color: #000;
+    border: solid 1px #000;
+    float: none;
+  }
+  #AddToCart:hover {
+    background-color: #000;
+    color: #FFF;
+  }
+</style>
 
