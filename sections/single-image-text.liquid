@@ -1,0 +1,467 @@
+<section class="home index-section homepage-section no-fouc slideshow-section" data-section-id="{{ section.id }}" data-section-type="slideshow-section">
+  <!-- Start Flexslider Option -->
+  <div class="flexslider" id="flexslider--{{ section.id }}">
+    <ul class="slides">
+      {%- assign image_size = '2048x' -%}
+      {%- assign img_url = section.settings.image | img_url: image_size -%}
+
+      <li id="slide--{{ section.id }}"  {% unless section.settings.image_style == 'content' %}style="background-image:url({{ img_url }});" {% endunless %}class="slide--{{ section.id }} slide_image" flexslider-index="{{ forloop.index0 }}" {{ section.shopify_attributes }}>
+        {% unless section.settings.slideshow == 'background' %}
+        {% if section.settings.image != blank %}
+        <a href="{{ section.settings.link }}">
+          <img src="{{ img_url }}"/>
+        </a>
+        {% endif %}
+        {% endunless %}
+
+        {% if section.settings.image == blank %}
+        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+        {%- assign placeholder = 'lifestyle-' | append: current -%}
+        {{ placeholder | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+
+        <div class="flex-caption slide-{{ section.id }}">
+          <div class="caption-inners">
+            {% if section.settings.title != 'blank' %}
+            <h2 class="slide-title">{{ section.settings.title }}</h2>
+            {% endif %}
+            {% if section.settings.subheading != 'blank' %}
+            <p class="caption">{{ section.settings.subheading }}</p>
+            {% endif %}
+            {% if section.settings.button_text != blank %}
+            <div class="cta">
+              {% if section.settings_link != blank %}
+                <a href="{{ section.settings.link }}">{{ section.settings.button_text }}</a>
+              {% else %}
+                <a href="#">{{ section.settings.button_text }}</a>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+
+
+      <style>
+        {% if section.settings.slideshow == 'background' %}
+        .flexslider {
+          width: 100%! important;
+          height: 100%! important;
+        }
+        {% if section.settings.image != blank %}
+        .flexslider .slides, .flexslider .slides > li {
+          height: 100vh! important;
+        }
+        {% endif %}
+        .flexslider .slides > li {
+          background-size: cover! important;
+          background-repeat: no-repeat! important;
+          background-position: center top! important;
+        }
+        {% endif %}
+        .flex-caption.slide-{{ section.id }} {
+          top: {{ section.settings.caption_vertical }};
+          text-align: {{ section.settings.caption_horizontal }};
+        }
+        .flex-caption.slide-{{ section.id }} .caption-inners {
+          {% if section.settings.caption_rgba %}
+          background: rgba({{ section.settings.caption_rgba_color }});
+          {% else %}
+          background: {{ section.settings.caption_background }};
+          {% endif %}
+        }
+        .flex-caption.slide-{{ section.id }} h2.slide-title {
+          color: {{ section.settings.slide_text_color }};
+        }
+        .flex-caption.slide-{{ section.id }} p {
+          color: {{ section.settings.slide_text_color }};
+        }
+        .flex-caption.slide-{{ section.id }} .cta a {
+          color: {{ section.settings.cta_color }};
+          background: {{ section.settings.cta_background }};
+        }
+        .cta a {
+          font-size: {{ section.settings.cta_size }};
+          font-weight: {{ section.settings.cta_weight }};
+        }
+        .flex-caption h2.slide-title {
+          font-size: {{ section.settings.slide-title-size }};
+          font-family: {{ section.settings.headings_font }};
+          font-weight:{{ section.settings.slide-title-weight }};
+        }
+        .flex-caption p {
+          font-size: {{ section.settings.caption-size }};
+        }
+      </style>
+    </ul>
+  </div>
+
+</section>
+<div class="clear"></div>
+
+
+{% schema %}
+{
+  "name": "Single Image + Text",
+  "settings": [
+      {
+        "type": "header",
+        "content": "Image text"
+      },
+      {
+        "type": "select",
+        "id": "slide-title-size",
+        "label": "Title Size",
+		"default": "22px",
+        "options": [
+          {
+            "value": "72px",
+            "label": "72px"
+          },
+          {
+            "value": "50px",
+            "label": "50px"
+          },
+          {
+            "value": "48px",
+            "label": "48px"
+          },
+          {
+            "value": "46px",
+            "label": "46px"
+          },
+          {
+            "value": "44px",
+            "label": "44px"
+          },
+          {
+            "value": "42px",
+            "label": "42px"
+          },
+          {
+            "value": "40px",
+            "label": "40px"
+          },
+          {
+            "value": "38px",
+            "label": "38px"
+          },
+          {
+            "value": "36px",
+            "label": "36px"
+          },
+          {
+            "value": "34px",
+            "label": "34px"
+          },
+          {
+            "value": "32px",
+            "label": "32px"
+          },
+          {
+            "value": "30px",
+            "label": "30px"
+          },
+          {
+            "value": "28px",
+            "label": "28px"
+          },
+          {
+            "value": "26px",
+            "label": "26px"
+          },
+          {
+            "value": "24px",
+            "label": "24px"
+          },
+          {
+            "value": "22px",
+            "label": "22px"
+          },
+          {
+            "value": "20px",
+            "label": "20px"
+          },
+          {
+            "value": "18px",
+            "label": "18px"
+          },
+          {
+            "value": "16px",
+            "label": "16px"
+          },
+          {
+            "value": "14px",
+            "label": "14px"
+          },
+          {
+            "value": "12px",
+            "label": "12px"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "slide-title-weight",
+        "label": "Title weight",
+		"default": "700",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "caption-size",
+        "label": "Caption size",
+		"default": "14px",
+        "options": [
+          {
+            "value": "72px",
+            "label": "72px"
+          },
+          {
+            "value": "50px",
+            "label": "50px"
+          },
+          {
+            "value": "48px",
+            "label": "48px"
+          },
+          {
+            "value": "46px",
+            "label": "46px"
+          },
+          {
+            "value": "44px",
+            "label": "44px"
+          },
+          {
+            "value": "42px",
+            "label": "42px"
+          },
+          {
+            "value": "40px",
+            "label": "40px"
+          },
+          {
+            "value": "38px",
+            "label": "38px"
+          },
+          {
+            "value": "36px",
+            "label": "36px"
+          },
+          {
+            "value": "34px",
+            "label": "34px"
+          },
+          {
+            "value": "32px",
+            "label": "32px"
+          },
+          {
+            "value": "30px",
+            "label": "30px"
+          },
+          {
+            "value": "28px",
+            "label": "28px"
+          },
+          {
+            "value": "26px",
+            "label": "26px"
+          },
+          {
+            "value": "24px",
+            "label": "24px"
+          },
+          {
+            "value": "22px",
+            "label": "22px"
+          },
+          {
+            "value": "20px",
+            "label": "20px"
+          },
+          {
+            "value": "18px",
+            "label": "18px"
+          },
+          {
+            "value": "16px",
+            "label": "16px"
+          },
+          {
+            "value": "14px",
+            "label": "14px"
+          },
+          {
+            "value": "12px",
+            "label": "12px"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "cta_size",
+        "label": "Button size",
+		"default": "14px",
+        "options": [
+          {
+            "value": "24px",
+            "label": "24px"
+          },
+          {
+            "value": "22px",
+            "label": "22px"
+          },
+          {
+            "value": "20px",
+            "label": "20px"
+          },
+          {
+            "value": "18px",
+            "label": "18px"
+          },
+          {
+            "value": "16px",
+            "label": "16px"
+          },
+          {
+            "value": "14px",
+            "label": "14px"
+          },
+          {
+            "value": "12px",
+            "label": "12px"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "cta_weight",
+        "label": "Button weight",
+		"default": "400",
+        "options": [
+          {
+            "value": "400",
+            "label": "Normal"
+          },
+          {
+            "value": "300",
+            "label": "Light"
+          },
+          {
+            "value": "700",
+            "label": "Bold"
+          }
+        ]
+      },
+      {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Image"
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Draw attention to a specific image or product"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button text",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        },
+    {
+        "type": "select",
+        "id": "caption_horizontal",
+        "label": "Caption horizontal alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "caption_vertical",
+        "label": "Caption vertical position (% or px)",
+        "default": "45%",
+        "info": "Vertically align the caption and button. % values are recommended, for example 20%, 30%."
+        },
+      {
+        "type": "color",
+        "id": "slide_text_color",
+        "label": "Text",
+        "default": "#000000"
+      },
+      {
+        "type": "checkbox",
+        "id": "caption_rgba",
+        "label": "Use RGBA"
+      },
+      {
+        "type": "text",
+        "id": "caption_rgba_color",
+        "label": "Caption rgba color",
+        "default": "255,255,255,0.4",
+        "info": "Example 255,255,255,0.4"
+      },
+      {
+        "type": "color",
+        "id": "caption_background",
+        "label": "Caption background",
+        "default": "transparent"
+      },
+      {
+        "type": "color",
+        "id": "cta_color",
+        "label": "Button text",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "cta_background",
+        "label": "Button background",
+        "default": "#000000"
+      }
+  ],
+  "presets": [{
+    "name": "Image + Text (Advanced)",
+    "category": "Image"
+  }]
+}
+{% endschema %}
