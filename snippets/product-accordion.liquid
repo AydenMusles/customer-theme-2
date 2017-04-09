@@ -7,24 +7,24 @@
     <dt>
     <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">FIT</a>
     </dt>
-    <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
-      <p>{{ product.metafields.c_f["Product Fit"] }}</p>
+    <dd class="accordion-content accordionItem is-collapsed animateOut" id="accordion1" aria-hidden="true">
+      {{ product.metafields.c_f["Product Fit"] }}
     </dd>
     {% endif %}
     {% if product.metafields.c_f["Product Care"] != blank %}
     <dt>
       <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger">CARE</a>
     </dt>
-    <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
-      <p>{{ product.metafields.c_f["Product Care"] }}</p>
+    <dd class="accordion-content accordionItem is-collapsed animateOut" id="accordion2" aria-hidden="true">
+      {{ product.metafields.c_f["Product Care"] }}
     </dd>
     {% endif %}
     {% if product.metafields.c_f["Product Size Guide"] != blank %}
     <dt>
       <a href="#accordion3" aria-expanded="false" aria-controls="accordion3" class="accordion-title accordionTitle js-accordionTrigger">SIZE GUIDE</a>
     </dt>
-    <dd class="accordion-content accordionItem is-collapsed" id="accordion3" aria-hidden="true">
-      <p>{{ product.metafields.c_f["Product Size Guide"] }}</p>
+    <dd class="accordion-content accordionItem is-collapsed animateOut" id="accordion3" aria-hidden="true">
+      {{ product.metafields.c_f["Product Size Guide"] }}
     </dd>
     {% endif %}
   </dl>
@@ -47,13 +47,13 @@
 
 .accordion dd,
 .accordion__panel {
-  font-size: 1em;
+  font-size: 12px;
   line-height: 1.5em;
   display: block;
 }
 
 .accordion p {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 2px;
   padding: 1em;
   /*text-transform: uppercase;*/
@@ -75,12 +75,21 @@
   position: relative;
 }
 .accordion li {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 2px;
 }
+.accordion .accordion-content.is-expanded {
+  padding: 15px;
+  text-align: center;
+}
+/*.accordion .accordion-content.is-collapsed {
+  padding: 0;
+  text-align: center;
+}*/
 .accordion .accordion-content > ul {
-  margin: 15px;
   list-style: outside;
+  display:table;
+  margin:0 auto;
 }
 .accordionTitle, .accordion__Heading {
   background-color: transparent;
@@ -110,7 +119,7 @@
 .accordionTitleActive:before,
 .accordionTitle.is-expanded:before {
   -webkit-transform: rotate(-225deg);
-          transform: rotate(-225deg);
+  transform: rotate(-225deg);
 }
 
 .accordionItem {
@@ -119,6 +128,8 @@
   max-height: 50em;
   -webkit-transition: max-height 1s;
   transition: max-height 1s;
+  /*padding: 15px;*/
+  text-align: center;
 }
 @media screen and (min-width: 48em) {
   .accordionItem {
@@ -138,77 +149,83 @@
 
 .animateIn {
   -webkit-animation: accordionIn 0.45s normal ease-in-out both 1;
-          animation: accordionIn 0.45s normal ease-in-out both 1;
+  animation: accordionIn 0.45s normal ease-in-out both 1;
 }
 
 .animateOut {
   -webkit-animation: accordionOut 0.45s alternate ease-in-out both 1;
-          animation: accordionOut 0.45s alternate ease-in-out both 1;
+  animation: accordionOut 0.45s alternate ease-in-out both 1;
 }
 
 @-webkit-keyframes accordionIn {
   0% {
+    padding: 0;
     opacity: 0;
     -webkit-transform: scale(0.9) rotateX(-60deg);
-            transform: scale(0.9) rotateX(-60deg);
+    transform: scale(0.9) rotateX(-60deg);
     -webkit-transform-origin: 50% 0;
-            transform-origin: 50% 0;
+    transform-origin: 50% 0;
   }
   100% {
+    padding: 15px;
     opacity: 1;
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 }
-
 @keyframes accordionIn {
   0% {
+    padding: 0;
     opacity: 0;
     -webkit-transform: scale(0.9) rotateX(-60deg);
-            transform: scale(0.9) rotateX(-60deg);
+    transform: scale(0.9) rotateX(-60deg);
     -webkit-transform-origin: 50% 0;
-            transform-origin: 50% 0;
+    transform-origin: 50% 0;
   }
   100% {
+    padding: 15px;
     opacity: 1;
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 }
 @-webkit-keyframes accordionOut {
   0% {
+    padding: 15px;
     opacity: 1;
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
   100% {
+    padding: 0;
     opacity: 0;
     -webkit-transform: scale(0.9) rotateX(-60deg);
-            transform: scale(0.9) rotateX(-60deg);
+    transform: scale(0.9) rotateX(-60deg);
   }
 }
 @keyframes accordionOut {
   0% {
+    padding: 15px;
     opacity: 1;
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
   100% {
+    padding: 0;
     opacity: 0;
     -webkit-transform: scale(0.9) rotateX(-60deg);
-            transform: scale(0.9) rotateX(-60deg);
+    transform: scale(0.9) rotateX(-60deg);
   }
 }
-  .collapse.in {
+.collapse.in {
   display: block;
   visibility: visible;
 }
-  .accordion {
+.accordion {
   float: left;
   width: 100%;
 }
-  .accordion-content {
-
+.accordion-content {
   position: relative;
 }
 
@@ -217,7 +234,7 @@
 
 
 <script>
-  //uses classList, setAttribute, and querySelectorAll
+//uses classList, setAttribute, and querySelectorAll
 //if you want this to work in IE8/9 youll need to polyfill these
 (function(){
   var d = document,
@@ -233,9 +250,10 @@
     e.target.click();
   }
 
-    setAriaAttr = function(el, ariaType, newProperty){
+  setAriaAttr = function(el, ariaType, newProperty){
     el.setAttribute(ariaType, newProperty);
   };
+
   setAccordionAria = function(el1, el2, expanded){
     switch(expanded) {
       case "true":
@@ -250,23 +268,25 @@
         break;
     }
   };
-//function
-switchAccordion = function(e) {
-  e.preventDefault();
-  var thisAnswer = e.target.parentNode.nextElementSibling;
-  var thisQuestion = e.target;
-  if(thisAnswer.classList.contains('is-collapsed')) {
-    setAccordionAria(thisQuestion, thisAnswer, 'true');
-  } else {
-    setAccordionAria(thisQuestion, thisAnswer, 'false');
-  }
-    thisQuestion.classList.toggle('is-collapsed');
-    thisQuestion.classList.toggle('is-expanded');
-    thisAnswer.classList.toggle('is-collapsed');
-    thisAnswer.classList.toggle('is-expanded');
 
-    thisAnswer.classList.toggle('animateIn');
+  //function
+  switchAccordion = function(e) {
+    e.preventDefault();
+    var thisTitle = e.target;
+    var thisContent = e.target.parentNode.nextElementSibling;
+    if(thisContent.classList.contains('is-collapsed')) {
+      setAccordionAria(thisTitle, thisContent, 'true');
+    } else {
+      setAccordionAria(thisTitle, thisContent, 'false');
+    }
+    thisTitle.classList.toggle('is-collapsed');
+    thisTitle.classList.toggle('is-expanded');
+    thisContent.classList.toggle('is-collapsed');
+    thisContent.classList.toggle('is-expanded');
+    thisContent.classList.toggle('animateIn');
+    thisContent.classList.toggle('animateOut');
   };
+
   for (var i=0,len=accordionToggles.length; i<len; i++) {
     if(touchSupported) {
       accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
