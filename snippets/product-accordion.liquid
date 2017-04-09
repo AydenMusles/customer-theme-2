@@ -32,7 +32,6 @@
 
 <style>
 
-
 .heading-primary {
   font-size: 2em;
   padding: 2em;
@@ -44,14 +43,12 @@
   display: block;
   width: 100%;
 }
-
 .accordion dd,
 .accordion__panel {
   font-size: 12px;
   line-height: 1.5em;
   display: block;
 }
-
 .accordion p {
   font-size: 12px;
   letter-spacing: 2px;
@@ -82,14 +79,11 @@
   padding: 15px;
   text-align: center;
 }
-/*.accordion .accordion-content.is-collapsed {
-  padding: 0;
-  text-align: center;
-}*/
 .accordion .accordion-content > ul {
   list-style: outside;
   display:table;
   margin:0 auto;
+  text-align: left;
 }
 .accordionTitle, .accordion__Heading {
   background-color: transparent;
@@ -138,25 +132,20 @@
     transition: max-height 0.5s;
   }
 }
-
 .accordionItem.is-collapsed {
   max-height: 0;
 }
-
 .no-js .accordionItem.is-collapsed {
   max-height: auto;
 }
-
 .animateIn {
   -webkit-animation: accordionIn 0.45s normal ease-in-out both 1;
   animation: accordionIn 0.45s normal ease-in-out both 1;
 }
-
 .animateOut {
   -webkit-animation: accordionOut 0.45s alternate ease-in-out both 1;
   animation: accordionOut 0.45s alternate ease-in-out both 1;
 }
-
 @-webkit-keyframes accordionIn {
   0% {
     padding: 0;
