@@ -1,6 +1,6 @@
 {% if section.settings.show-sku %}<span class="variant-sku"></span>{% endif %}
 <form action="/cart/add" method="post" data-money-format="{{ shop.money_format }}" enctype="multipart/form-data" id="AddToCartForm">
-  {% if product.options.size > 1 %}
+  {% if product.options.size >= 1 %}
   <div class="select">
     <select id="product-select" name='id'>
       {% for variant in product.variants %}
