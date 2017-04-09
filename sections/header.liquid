@@ -204,9 +204,12 @@
   #inline-show {
     padding: 5px 5px 5px 0;
   }
+   li#inline-search {
+    /*margin-right: -20px;*/
+   }
   li#inline-search div#search {
     text-align: right;
-    max-width:300px;
+    max-width:250px;
     display: inline-block;
   }
   li#inline-search div#search form {
@@ -215,7 +218,7 @@
   li#inline-search div#search form #q {
     display: none;
     height: inherit;
-    width: 200px;
+    width: 150px;
     text-align: center;
     border-bottom: 1px solid #000;
     padding: 5px 0 ;
@@ -228,11 +231,14 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+  .nav-container ul#cart li a, .nav-container ul#cart li {
+    padding: 0;
+  }
 </style>
 <script>
 $('#inline-show').click(function(e) {
   e.preventDefault();
-  $('li#inline-search div#search form #q').toggle('slow');
+  $('li#inline-search div#search form #q').toggle('slow').focus();
 })
 </script>
 
@@ -470,20 +476,20 @@ $('#inline-show').click(function(e) {
 	  "info":"You can change the text in your edit language section"
       },
 	 {
-        "type": "select",
-        "id": "nav-style",
-        "label": "Navigation style",
-        "options": [
-          {
-            "value": "full",
-            "label": "Full"
-          },
-          {
-            "value": "mobile",
-            "label": "Mobile"
-          }
-        ]
-      },
+          "type": "select",
+          "id": "nav-style",
+          "label": "Navigation style",
+          "options": [
+            {
+              "value": "full",
+              "label": "Full"
+            },
+            {
+              "value": "mobile",
+              "label": "Mobile"
+            }
+          ]
+        },
         {
           "type": "checkbox",
           "id": "header_cover",

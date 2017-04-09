@@ -685,6 +685,12 @@ header ul { margin-bottom: 0; }
   vertical-align: middle;
   float: none! important;
   min-height: 1px;
+
+  /*Added to center nav*/
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+
 }
 
 nav { text-align: left; }
@@ -694,14 +700,15 @@ ul#main-nav {
   text-align: left;
   margin-bottom: 0;
   width: 100%;
-}
 
+  /*added to center nav*/
+  text-align: center;
+}
 
 ul#main-nav li {
   display: inline-block;
   vertical-align: middle;
 }
-
 
 ul#main-nav li a, .nav-container ul#cart li a, .nav-container ul#cart li {
   font-family: {{ settings.navigation-font}};
@@ -715,6 +722,15 @@ ul#main-nav li a, .nav-container ul#cart li a, .nav-container ul#cart li {
 /* NO LINK UNDERLINE */
 ul#main-nav li a:hover, .nav-container ul#cart li a:hover {
   text-decoration: none;
+}
+
+/*added to center nav*/
+.nav-container ul#cart {
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  width: 40%;
+  z-index: 10;
 }
 
 /* DOWNDOWN INDICATOR CHEVRONS */
@@ -2069,7 +2085,7 @@ ul#blog-recent, ul#blog-tags {
 /* ============================================== */
 .search-content { text-align: center; padding: 10px; }
 #search-bar { margin-bottom: 20px; margin-top: 20px; border-bottom: 1px solid {{ settings.dotted_color }}; }
-#search-bar #q {width: 300px;  }
+#search-bar #q {width: 2500px;  }
 #q { text-transform: uppercase; }
 
 /* ============================================== */
