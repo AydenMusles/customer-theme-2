@@ -1,0 +1,98 @@
+<div data-section-id="{{ section.id }}">
+
+  {% if section.settings.blog-banner %}
+  {%- assign image_size = '2048x' -%}
+  {%- assign img_url = section.settings.image | img_url: image_size -%}
+  <div class="collection-banner">
+    <img src="{{ img_url }}">
+  </div>
+  {% endif %} 
+  
+  <div id="content" class="row">
+
+    {% if settings.breadcrumb %}
+    {% include 'breadcrumb' %}	
+    {% endif %}	
+
+    <div class="section-title desktop-12 mobile-3">
+      <h1>{% if current_tags %}{{ blog.title | link_to: blog.url }} &raquo; {{ current_tags.first }}{% else %}{{ blog.title }}{% endif %}<a class="fr" target="_blank" href="{{ shop.url }}/blogs/{{ blog.handle }}.atom"><i class="icon-rss icon-2x"></i></a></h1>
+    </div>
+    
+    {% if section.settings.text != blank %}
+    <div id="collection-description" class="desktop-12 tablet-6 mobile-3"> 
+      <div class="rte">      
+        {{ section.settings.text }}
+      </div>  
+    </div>  
+    {% endif %}
+
+    {% include 'pressify' %}
+
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog-banner",
+        "label": "Show banner image",
+        "default": false
+      },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+    {
+        "id": "text",
+        "type": "richtext",
+        "label": "Text",
+        "default": "<p> </p>"
+     },
+      {
+        "type": "checkbox",
+        "id": "blog-sidebar",
+        "label": "Show sidebar",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "recent-posts",
+        "label": "Show recent posts",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "recent-title",
+        "label": "Recent posts title",
+        "default": "Explore"
+      },
+      {
+        "type": "checkbox",
+        "id": "post-tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tags-title",
+        "label": "Blog tags title",
+        "default": "Categories"
+      },
+      {
+        "type": "checkbox",
+        "id": "show-facebook-like",
+        "label": "Show Facebook like box",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "facebook-title",
+        "label": "Facebook title",
+        "default": "Connect"
+      }
+    ]
+  }
+{% endschema %}

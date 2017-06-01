@@ -1548,14 +1548,14 @@
     "cart_notes_enable": false,
     "ajax_cart_method": "drawer",
     "twittername": "https:\/\/twitter.com\/lescoquinesusa",
-    "facebook_url": "https:\/\/www.facebook.com\/Les-Coquines-USA",
+    "facebook_url": "https:\/\/www.facebook.com\/Les-Coquines-USA-1433792820175591",
     "pinterest_url": "",
     "tumblr_url": "",
     "youtube_url": "",
     "googleplus_url": "",
-    "instagram-id": "1094325083",
-    "snapchat-id": "Enter ID only",
-    "weibo-id": "Enter ID only",
+    "instagram-id": "lescoquinesusa",
+    "snapchat-id": "",
+    "weibo-id": "",
     "popup": false,
     "email_popup_image": false,
     "email-image": "",
@@ -1578,6 +1578,8 @@
     "checkout_accent_color": "#1990c6",
     "checkout_button_color": "#1990c6",
     "checkout_error_color": "#ff6d6d",
+    "dropdowncart_enable": "1",
+    "dropdowncart_type": "hover",
     "main_nav": "main-menu",
     "megadropdown_link": "",
     "nav_promo_image": false,
@@ -1699,17 +1701,17 @@
         "type": "header",
         "settings": {
           "full-width-header": true,
-          "banner_message": "FREE SHIPPING ON ORDERS OVER $100 USD",
-          "banner_size": "11px",
+          "banner_message": "",
+          "banner_size": "17px",
           "use_logo_image": true,
           "logo": "shopify:\/\/shop_images\/LOGO_215_x_75_f22c32bc-7e65-416b-bb38-f8347bc0cc39.png",
           "logo_max_width": "350",
-          "logo-align": "center",
+          "logo-align": "center-top",
           "logo-size": "22px",
           "logo-transform": "uppercase",
           "logo-weight": "700",
           "cart-position": "header",
-          "cart_icon": "bag",
+          "cart_icon": "cart",
           "nav-style": "full",
           "header_cover": false,
           "header_border": false,
@@ -1726,19 +1728,30 @@
           "1479846461263": {
             "type": "menu",
             "settings": {
-              "footer_nav": "footer",
-              "title": ""
+              "footer_nav": "customer-service",
+              "title": "Customer Service"
+            }
+          },
+          "1491595424520": {
+            "type": "menu",
+            "settings": {
+              "footer_nav": "information",
+              "title": "Information"
             }
           },
           "1479499878046": {
             "type": "newsletter",
             "settings": {
-              "title": "JOIN OUR NEWSLETTER!"
+              "title": "JOIN OUR NEWSLETTER!",
+              "newsletter_style_border_box": true,
+              "newsletter_email_placeholder": "ENTER YOUR EMAIL ADDRESS",
+              "newsletter_submit_text": "SUBSCRIBE"
             }
           }
         },
         "block_order": [
           "1479846461263",
+          "1491595424520",
           "1479499878046"
         ],
         "settings": {
@@ -1748,65 +1761,12 @@
           "footer_title_size": "12px"
         }
       },
-      "1478800373635": {
-        "type": "slideshow",
-        "blocks": {
-          "1478800373635-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/TEST2.jpg",
-              "title": "FUN IN THE SUN",
-              "subheading": "BIKINIS",
-              "button_text": "SHOP NOW",
-              "link": "",
-              "caption_horizontal": "center",
-              "caption_vertical": "45%",
-              "slide_text_color": "#000000",
-              "caption_rgba": false,
-              "caption_rgba_color": "255,255,255,0.4",
-              "caption_background": "rgba(0,0,0,0)",
-              "cta_color": "#ffffff",
-              "cta_background": "#000000"
-            }
-          },
-          "1478800373635-1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/TEST3_ad08f9e4-2f58-4669-ae3c-068033adccb2.jpg",
-              "title": "NEW BIKINIS JUST IN",
-              "subheading": "",
-              "button_text": "SHOP 2 PIECES",
-              "link": "",
-              "caption_horizontal": "left",
-              "caption_vertical": "45%",
-              "slide_text_color": "#000000",
-              "caption_rgba": false,
-              "caption_rgba_color": "255,255,255,0.4",
-              "caption_background": "rgba(0,0,0,0)",
-              "cta_color": "#ffffff",
-              "cta_background": "#000000"
-            }
-          }
-        },
-        "block_order": [
-          "1478800373635-0",
-          "1478800373635-1"
-        ],
-        "settings": {
-          "slideshow": "content",
-          "slide-title-size": "22px",
-          "slide-title-weight": "700",
-          "caption-size": "14px",
-          "cta_size": "14px",
-          "cta_weight": "400"
-        }
-      },
       "1478800534081": {
         "type": "instagram",
         "settings": {
           "title": "Follow us on Instagram",
           "instagram-user-id": "1094325083",
-          "instagram-access-token": "1094325083.5ea0515.8c76c4c88d5a4ad298b777316e1b13a7",
+          "instagram-access-token": "1094325083.5ea0515.7e9253b058254bf597ae266e30c0199b",
           "instagram-title-color": "#000000",
           "instagram-background-color": "rgba(0,0,0,0)"
         }
@@ -1839,9 +1799,10 @@
         "settings": {
           "enable-zoom": true,
           "thumbnails": "right",
-          "product-vendor": true,
+          "product-vendor": false,
           "show-sku": false,
-          "product-note": "Add a note to encourage purchase"
+          "show-qty": false,
+          "product-note": ""
         }
       },
       "blog-template": {
@@ -1866,36 +1827,54 @@
           "megadropdown_link": "Home"
         }
       },
-      "1489610563149": {
+      "1478800373635": {
         "type": "slideshow",
         "blocks": {
-          "1489610563149-0": {
+          "1478800373635-0": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Les_Coquines_7252-TEST_cf8c93e3-7828-44f5-aef6-ad85fe0b12ef.jpg",
-              "title": "",
-              "subheading": "",
-              "button_text": "",
-              "link": "",
-              "caption_horizontal": "left",
+              "image": "shopify:\/\/shop_images\/SAGE-SUIT_a93f1b02-7509-480d-9afa-d2ba5d006353.jpg",
+              "title": "CROP TOPS",
+              "subheading": "FOR EVERY OCCASION",
+              "button_text": "SHOP NOW",
+              "link": "shopify:\/\/products\/giselle-mesh-crop-top",
+              "caption_horizontal": "right",
               "caption_vertical": "45%",
-              "slide_text_color": "rgba(0,0,0,0)",
+              "slide_text_color": "#000000",
+              "caption_rgba": false,
+              "caption_rgba_color": "255,255,255,0.4",
+              "caption_background": "rgba(0,0,0,0)",
+              "cta_color": "#ffffff",
+              "cta_background": "#000000"
+            }
+          },
+          "1491866685937": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/GREEN-BOTTOM_copy.jpg",
+              "title": "SWIM IS HERE",
+              "subheading": "MESH + PRINT + SOLID",
+              "button_text": "SHOP NOW",
+              "link": "shopify:\/\/collections\/swim",
+              "caption_horizontal": "center",
+              "caption_vertical": "27%",
+              "slide_text_color": "#000000",
               "caption_rgba": false,
               "caption_rgba_color": "255,255,255,0.4",
               "caption_background": "transparent",
               "cta_color": "#ffffff",
-              "cta_background": "rgba(0,0,0,0)"
+              "cta_background": "#040404"
             }
           },
-          "1489610563149-1": {
+          "1495246242712": {
             "type": "image",
             "settings": {
-              "image": "",
-              "title": "Slide",
-              "subheading": "Tell your brand's story through images",
-              "button_text": "Button",
-              "link": "",
-              "caption_horizontal": "left",
+              "image": "shopify:\/\/shop_images\/HALTER1.jpg",
+              "title": "ESSENTIAL SWIM SOLIDS",
+              "subheading": "FAVORITE COLORS",
+              "button_text": "SWIM SOLIDS",
+              "link": "shopify:\/\/products\/cara-high-neck-sprt-bra",
+              "caption_horizontal": "center",
               "caption_vertical": "45%",
               "slide_text_color": "#000000",
               "caption_rgba": false,
@@ -1907,37 +1886,70 @@
           }
         },
         "block_order": [
-          "1489610563149-0",
-          "1489610563149-1"
+          "1478800373635-0",
+          "1491866685937",
+          "1495246242712"
         ],
         "settings": {
-          "slideshow": "background",
-          "slide-title-size": "22px",
+          "slideshow": "content",
+          "slide-title-size": "48px",
           "slide-title-weight": "700",
-          "caption-size": "14px",
+          "caption-size": "16px",
           "cta_size": "14px",
           "cta_weight": "400"
         }
       },
-      "1489625443403": {
-        "type": "parallax-image",
+      "1493940896238": {
+        "type": "single-image-text",
         "settings": {
-          "image": "shopify:\/\/shop_images\/TEST2_b76bd939-5e20-4ce0-ba19-6b97ab221c9a.jpg",
-          "page-content": "none",
-          "page": "",
-          "page-text": "",
-          "link": "",
-          "page-height": "1000",
-          "page-text-color": "#000",
-          "parallax-font-size": "26px",
-          "parallax-font-weight": "400"
+          "slide-title-size": "22px",
+          "slide-title-weight": "700",
+          "caption-size": "14px",
+          "cta_size": "14px",
+          "cta_weight": "400",
+          "image": "shopify:\/\/shop_images\/4.jpg",
+          "title": "PUNCH OF COLOR",
+          "subheading": "DELICATE EYELASH LACES",
+          "button_text": "SHOP LACE",
+          "link": "shopify:\/\/products\/eden-eyelash-racerback",
+          "caption_horizontal": "left",
+          "caption_vertical": "45%",
+          "slide_text_color": "#000000",
+          "caption_rgba": false,
+          "caption_rgba_color": "255,255,255,0.4",
+          "caption_background": "transparent",
+          "cta_color": "#ffffff",
+          "cta_background": "#000000"
+        }
+      },
+      "1495469768391": {
+        "type": "single-image-text",
+        "settings": {
+          "slide-title-size": "22px",
+          "slide-title-weight": "700",
+          "caption-size": "14px",
+          "cta_size": "14px",
+          "cta_weight": "400",
+          "image": "shopify:\/\/shop_images\/PALM-MIDDLE_ecf61f10-09d2-40ac-ab69-4251681e2f58.jpg",
+          "title": "GET SUMMER READY",
+          "subheading": "",
+          "button_text": "SHOP SWIM",
+          "link": "shopify:\/\/collections\/swim",
+          "caption_horizontal": "center",
+          "caption_vertical": "45%",
+          "slide_text_color": "#000000",
+          "caption_rgba": false,
+          "caption_rgba_color": "255,255,255,0.4",
+          "caption_background": "transparent",
+          "cta_color": "#ffffff",
+          "cta_background": "#000000"
         }
       }
     },
     "content_for_index": [
       "1478800373635",
-      "1489610563149",
-      "1489625443403",
+      "1495469768391",
+      "1493940896238",
       "1478800534081"
     ]
   }
