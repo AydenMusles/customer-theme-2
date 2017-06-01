@@ -1,0 +1,371 @@
+      {{ 'https://pressify.s3.amazonaws.com/assets/salvattore.css' | stylesheet_tag }}
+      <link href='https://pressify.s3.amazonaws.com/assets/bxslider/jquery.bxslider.css' rel='stylesheet' type='text/css'>
+        <style>
+          #grid{ padding: 20px 50px;}
+          #grid[data-columns]::before {
+              content: '5 .columnnn.size-1of5';
+          }
+
+          .pressslider {
+            padding: 0px 0px 0px 0px !Important;
+            margin: 0px 0px 0px 0px !Important;
+          }
+
+          /* These are the classes that are going to be applied: */
+          .columnnn { float: left; }
+          .size-1of5 { width: 20%; }
+          .size-1of3 { width: 33.333%; }
+
+          .press_modal_wrapper{
+            background-color:rgba(255,255,255,0.5);
+              display: none;
+              height: 500px;
+        width: 980px;
+              margin: 0px auto;
+          }
+          .press_modal{
+            padding: 20px 20px 20px 20px;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+
+          }
+          .press_toolbar{
+            border-top: 0px solid #eee;
+            padding: 0px 0px 10px 0px;
+            margin-bottom: 10px;
+          }
+          .press_title{
+            float: left;
+            width: 80%;
+            overflow: hidden;
+            text-transform: uppercase;
+          }
+          .press_close{
+            float: right;
+            width: 200px;
+            overflow: hidden;
+          }
+          .slide_container{
+            width: 500px;
+            float: left;
+          }
+          .slide_container img{
+            max-width: 100%;
+          }
+
+          .product_container {
+            border: 0 solid #eee;
+            float: left;
+            font-size: 12px;
+            padding: 5px;
+            text-align: center;
+            width: 46%;
+          }
+
+          .pressify_product_grid{
+            margin: 0px;
+              padding: 10px 0 0 0;
+              list-style: none;
+          }
+
+          .pressify_product_grid li {
+            float: none;
+            margin-left: 5px;
+            margin-right: 5px;
+            width: 100%;
+          }
+
+          .pressify_product_grid li a img{
+            max-width: 70%;
+              margin: 0px auto;
+          }
+
+          .press_close{
+            text-align: right;
+          }
+
+          .pressify_grid_item{ border: 1px solid #eee; width: 23%; margin-right: 1%; margin-bottom: 10px; max-height: 320px; min-height: 320px; overflow: hidden; float: left; text-align: center; }
+          .pressify_grid_item a img{ display: block !important; max-width:100% !important; max-height:100% !important; width: auto !important; height: auto !important; margin: 0px auto 0px auto !important; }
+
+          /* mASONRY SET UP*/
+          .pressify_padding{
+            padding: 0px 55px 0px 55px;
+          }
+          .pressify_wrapper{
+              width: 100%;
+              max-width: 100%;
+              margin: 0px auto;
+              padding: 20px 55px;
+          }
+          .cols_press {
+              -moz-column-count:6;
+              -moz-column-gap: 5px;
+              -moz-column-width: 20%;
+              -webkit-column-count:6;
+              -webkit-column-gap: 5px;
+              -webkit-column-width: 20%;
+              column-count: 6;
+              column-gap: 5px;
+              column-width: 20%;
+          }
+          .box {
+             margin-bottom: 5px;
+              margin-left: 5px;
+              text-align: center;
+          }
+          .box a img{
+            width: 100%;
+             /* -webkit-filter: grayscale(100%);
+        filter: gray;
+        filter: grayscale(100%);*/
+              /* transition: 1s; */
+          }
+          .box a:hover img{
+            opacity: 0.8;
+            /*-webkit-filter: grayscale(0);
+        filter: grayscale(0);*/
+              /* transition: 1s; */
+          }
+          .box a.active img{
+            -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+          }
+
+          .pressify_description{
+            margin-bottom: 20px;
+          }
+          /*
+          .pressify_meta:hover .pressify_description, .pressify_img:hover .pressify_description{
+            display: none;
+          }*/
+
+
+          @media only screen and (max-width: 1100px) {
+
+            #grid{
+              padding: 20px 10px;
+            }
+
+            #grid[data-columns]::before {
+                content: '3 .columnnn.size-1of3';
+            }
+
+
+            .press_modal_wrapper{
+                background-color:rgba(255,255,255,0.5);
+                display: none;
+                min-height: 500px;
+                height: auto;
+                width: 100%;
+                margin: 0px auto;
+            }
+            .pressify_wrapper{
+                width: 100%;
+                max-width: 100%;
+                margin: 0px auto;
+                padding: 20px;
+            }
+            .slide_container, .product_container{
+              float: none;
+              width: 100% !important;
+              max-width: 100% !important;
+            }
+            .slide_container{
+              padding: 15px;
+            }
+            .press_close {
+              float: right;
+              overflow: hidden;
+              padding-right: 15px;
+              width: 200px;
+            }
+            .press_modal{
+                padding: 5px;
+                background: #fff;
+
+              }
+              /*.press_title, .press_comment{ display: none; }*/
+              .slide_container{
+                width: 300px;
+                float: none;
+              }
+              .bx-controls, .bx-controls-direction, .bx-pager {
+                display: block;
+                height: 0;
+              }
+              .cols_press {
+                -moz-column-count:3;
+                -moz-column-gap: 0%;
+                -moz-column-width: 30%;
+                -webkit-column-count:3;
+                -webkit-column-gap: 0%;
+                -webkit-column-width: 30%;
+                column-count: 3;
+                column-gap: 0%;
+                column-width: 30%;
+              }
+            }
+        </style>
+
+      <div class="press_modal_wrapper">
+  <div class="press_modal">
+        <div class="press_toolbar">
+          <h1 class="press_title" style="display: none;"></h1>
+          <div class="press_close"><a href="#" class="close_press" press-id="{{forloop.index}}"><img src="https://pressify.s3.amazonaws.com/assets/close-icon.png" style="max-width: 25px;" /></a></div>
+          <div style="clear: both;"></div>
+        </div>
+
+        <div class="slide_container">
+          <ul class="pressslider"></ul>
+        </div>
+        <div class="product_container">
+
+          <h2 class="product_shop">SHOP THE LOOK</h2>
+            <ul class="pressify_product_grid">
+              <li>
+                <a href="#" class="product_href">
+                  <div class="product_img"></div>
+                  <!-- <div class="product_title"></div> -->
+                </a>
+              </li>
+            </ul>
+
+        </div>
+        <div style="clear: both;"></div>
+        <div style="display: none;position: relative; margin-top: -30px; float: left;"><a href="#" class="press_url">Read Full Article</a></div>
+        <div style="display: none;position: relative; margin-top: -30px; float: right;"><a href="#" class="press_comment"></a></div>
+      </div>
+      <div style="clear:both;"></div>
+  </div>
+
+
+  <!-- <div class="pressify_wrapper cols_press"> -->
+  <div style="clear:both;"></div>
+  <div id="grid" data-columns>
+
+    {% paginate blog.articles by 250 %}
+        {% for article in blog.articles %}
+        <div class="box">
+          <a href="#inline{{forloop.index}}" press-comment="{{ article.metafields.press.comment }}" press-url="{{ article.url }}" press-title="{{ article.title }}" article-id="{{article.id}}" press-id="{{forloop.index}}" product-handle="{{ article.metafields.press.product_handle }}" class="go_carousel"><img src="{{ article.metafields.press.cover | replace: 'http:', 'https:' }}" style="max-width: 100%;" /></a>
+          <div style="display: none;" id="slides{{forloop.index}}">
+            {% assign images = article.metafields.press.images | split: '|' %}
+            {% assign externallink = article.metafields.press.externallink %}
+
+            {% for img in images %}
+            <li style="position:relative;" class="pressify_img">
+              <img src="{{ img | replace: 'http:', 'https:' }}" style="width: 100%; max-width: 100%;" />
+              <div class="pressify_meta" style="padding-top: 20px;/*position:absolute; width: 100%; bottom: 0px; color: #fff; background: rgba(0,0,0,.4); padding: 20px;*/">
+                <h3 style="margin: 0px; padding: 0px; font-size: 16px; ">{{ article.title | upcase }}</h3>
+                <div class="pressify_description">{{ article.metafields.press.comment }}</div>
+                {% if externallink %}
+                <a href="{{ externallink }}" target="_blank" style="">Read Article</a>
+                {% else %}
+                  <a href="{{ article.url }}" style="">Read Article</a>
+                {% endif %}
+
+              </div>
+            </li>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+
+        {% endpaginate %}
+        <script src="https://pressify.s3.amazonaws.com/assets/bxslider/jquery.bxslider.min.js"></script>
+        <script type="text/javascript">
+          $( document ).ready(function() {
+                // load products
+                $('.pressify-loader').hide();
+                var slider = jQuery('.pressslider').bxSlider({
+                  minSlides: 1,
+                  maxSlides: 1,
+                  slideWidth: 500,
+                  slideMargin: 10,
+                  adaptiveHeight: true,
+                  controls: true
+                });
+
+
+                jQuery(".go_carousel").click(function(){
+                  //jQuery('.product_container').height(jQuery('.pressify_img').height());
+                  jQuery(".go_carousel").removeClass('active');
+                  jQuery(this).addClass('active');
+
+            jQuery('html, body').animate({scrollTop:100}, 'slow');
+                  var showbox 		= jQuery(this).attr('href');
+                  var handle 		= jQuery(this).attr('product-handle');
+                  var press_id		= jQuery(this).attr('press-id');
+                  var title			= jQuery(this).attr('press-title');
+                  var comment		= jQuery(this).attr('press-comment');
+                  var press_url		= jQuery(this).attr('press-url');
+                  var article_id	= jQuery(this).attr('article-id');
+
+                  jQuery.getJSON('https://seedpressify.herokuapp.com/products/show.json?article_id='+article_id, function(products) {
+                   jQuery('.product_shop').show();
+                     jQuery('.json_product').remove();
+                     var ImgCount = 0;
+                     jQuery.each( products, function( key, val ) {
+
+
+                       jQuery.getJSON('/products/'+val.product_handle+'.js', function(product) {
+
+                          jQuery('.pressify_product_grid').append( '<li class="json_product"><a href="/products/'+val.product_handle+'"><div class=""><img src="'+product.images[0]+'" style="max-width: 100%; max-height: 200px;" /></div><div class="product_title">'+product.title+'</div></a></li>' );
+
+                        });
+
+                       ImgCount = ImgCount + 1;
+                     });
+
+                    if(ImgCount == 1){
+                      var newHeight 	= jQuery('.pressify_img').height() / 4;
+                      jQuery('.product_container').css('padding-top', newHeight+'px');
+
+                    }else{
+                      jQuery('.product_container').css('padding-top', '0px');
+                    }
+
+                  });
+
+                  jQuery('.press_title').html(title);
+                  jQuery('.press_comment').html(comment);
+                  jQuery('.press_url').attr('href',press_url);
+                  jQuery('.press_modal_wrapper').slideDown();
+                  jQuery('.pressslider').html(jQuery('#slides'+press_id).html());
+
+                  console.log(title);
+
+                  slider.reloadSlider();
+
+                  if(handle){
+
+                    jQuery.getJSON('/products/'+handle+'.js', function(product) {
+                      jQuery('.product_shop').show();
+                      jQuery('.product_href').attr('href','/products/'+handle).show();
+
+                      jQuery('.product_title').html(product.title).show();
+                      jQuery('.product_img').html('<img src="'+product.images[0]+'" style="max-width: 100%; max-height: 200px;" />').show();
+                    });
+                  }else{
+                    jQuery('.product_href').hide();
+                    jQuery('.product_title').hide();
+                    jQuery('.product_img').hide();
+                    jQuery('.product_shop').hide();
+
+                  }
+
+
+                });
+
+                jQuery(".close_press").click(function(){
+
+                  var press_id = jQuery(this).attr('press-id');
+                  jQuery('.press_modal_wrapper').slideUp();
+                  return false;
+
+                });
+               });
+              </script>
+          {{ 'https://pressify.s3.amazonaws.com/assets/salvattore.min.js' | script_tag }}
+      </div>
+    
