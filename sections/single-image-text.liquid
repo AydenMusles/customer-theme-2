@@ -1,4 +1,4 @@
-<section class="home index-section homepage-section no-fouc slideshow-section" data-section-id="{{ section.id }}" data-section-type="slideshow-section">
+<section class="home index-section homepage-section no-fouc slideshow-section single-image-text" data-section-id="{{ section.id }}" data-section-type="slideshow-section">
   <!-- Start Flexslider Option -->
   <div class="flexslider" id="flexslider--{{ section.id }}">
     <ul class="slides">
@@ -44,52 +44,52 @@
 
       <style>
         {% if section.settings.slideshow == 'background' %}
-        .flexslider {
+        #shopify-section-{{ section.id }} .flexslider {
           width: 100%! important;
           height: 100%! important;
         }
         {% if section.settings.image != blank %}
-        .flexslider .slides, .flexslider .slides > li {
+        #shopify-section-{{ section.id }} .flexslider .slides, .flexslider .slides > li {
           height: 100vh! important;
         }
         {% endif %}
-        .flexslider .slides > li {
+        #shopify-section-{{ section.id }} .flexslider .slides > li {
           background-size: cover! important;
           background-repeat: no-repeat! important;
           background-position: center top! important;
         }
         {% endif %}
-        .flex-caption.slide-{{ section.id }} {
+        #shopify-section-{{ section.id }} .flex-caption.slide-{{ section.id }} {
           top: {{ section.settings.caption_vertical }};
           text-align: {{ section.settings.caption_horizontal }};
         }
-        .flex-caption.slide-{{ section.id }} .caption-inners {
+        #shopify-section-{{ section.id }} .flex-caption.slide-{{ section.id }} .caption-inners {
           {% if section.settings.caption_rgba %}
           background: rgba({{ section.settings.caption_rgba_color }});
           {% else %}
           background: {{ section.settings.caption_background }};
           {% endif %}
         }
-        .flex-caption.slide-{{ section.id }} h2.slide-title {
+        #shopify-section-{{ section.id }} .flex-caption.slide-{{ section.id }} h2.slide-title {
           color: {{ section.settings.slide_text_color }};
         }
-        .flex-caption.slide-{{ section.id }} p {
+        #shopify-section-{{ section.id }} .flex-caption.slide-{{ section.id }} p {
           color: {{ section.settings.slide_text_color }};
         }
-        .flex-caption.slide-{{ section.id }} .cta a {
+        #shopify-section-{{ section.id }} .flex-caption.slide-{{ section.id }} .cta a {
           color: {{ section.settings.cta_color }};
           background: {{ section.settings.cta_background }};
         }
-        .cta a {
+        #shopify-section-{{ section.id }} .cta a {
           font-size: {{ section.settings.cta_size }};
           font-weight: {{ section.settings.cta_weight }};
         }
-        .flex-caption h2.slide-title {
+        #shopify-section-{{ section.id }} .flex-caption h2.slide-title {
           font-size: {{ section.settings.slide-title-size }};
           font-family: {{ section.settings.headings_font }};
           font-weight:{{ section.settings.slide-title-weight }};
         }
-        .flex-caption p {
+        #shopify-section-{{ section.id }} .flex-caption p {
           font-size: {{ section.settings.caption-size }};
         }
       </style>
